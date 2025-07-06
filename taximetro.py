@@ -1,12 +1,12 @@
-import tkinter as tk
-from tkinter import messagebox, ttk
-import time
-import sqlite3
-from datetime import datetime
+import tkinter as tk #Tkinter es una librería para crear ventanas y elementos gráficos en Python
+from tkinter import messagebox, ttk #message box mostrar ventanas emer, tkk acceso a widges
+import time  #manejar el tiempo
+import sqlite3  #manejar datos, guardar en la compu
+from datetime import datetime  #trabajar con fechas y horas
 
 class TaximeterGUI:
-    def __init__(self, root):
-        self.root = root
+    def __init__(self, root): #self guarda cosas dentro del objeto y root interfaz
+        self.root = root 
         self.root.title("F5 Taximeter")
 
         # Estado del taxímetro
@@ -21,7 +21,7 @@ class TaximeterGUI:
         self.conn = sqlite3.connect("taximeter.db")
         self.create_table()
 
-        # Widgets
+        # Widgets  # Crear una etiqueta
         self.label_status = tk.Label(root, text="Press Start", font=("Arial", 16))
         self.label_status.pack(pady=10)
 
@@ -65,7 +65,7 @@ class TaximeterGUI:
                 total_fare REAL
             )
         """)
-        self.conn.commit()
+        self.conn.commit() #genera la conexion a la base de datos y guarda los cambios
 
     def save_trip(self, stopped_time, moving_time, total_fare):
         """Guardar un viaje en la base de datos."""
